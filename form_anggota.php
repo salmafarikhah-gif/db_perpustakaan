@@ -18,9 +18,12 @@ $status = isset($_GET["status"]) ? $_GET["status"] : "";
 </head>
 <body>
 <h1>Pendaftaran Anggota Perpustakaan</h1>
+<a href = data.php>Lihat Daftar Anggota</a>
+
 <?php if ($status === "sukses") { ?>
     <p class="sukses">Data anggota berhasil disimpan.</p>
 <?php } ?>
+
 <form action="proses_anggota.php" method="post">
     <label for="no_anggota">Nomor Anggota</label>
     <input type="text" id="no_anggota" name="no_anggota">

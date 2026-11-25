@@ -3,6 +3,7 @@
 require_once "koneksi.php";
 
 $sql ="SELECT * FROM anggota order by id desc";
+
 $hasil = mysqli_query($koneksi, $sql);
 
 $jumlah = mysqli_num_Rows($hasil);
@@ -17,9 +18,9 @@ $jumlah = mysqli_num_Rows($hasil);
     <title>Document</title>
 </head>
 <body>
-    <table>
+    <table border= "1">
         <tr>
-            <th>Nomor Anggota</th><th>Nama Lengkap</th><th>Email</th><th>Nomor HP</th><th>Jenis Anggota</th><th>Alamat</th>
+            <th>No</th><th>Nama Lengkap</th><th>Email</th><th>Nomor HP</th><th>Jenis Anggota</th><th>Alamat</th><th>Aksi</th>
         </tr>
         <?php $no_anggota = 1; while ($baris = mysqli_fetch_assoc($hasil)) { ?>
         <tr>
@@ -30,7 +31,8 @@ $jumlah = mysqli_num_Rows($hasil);
             <td><?php echo htmlspecialchars($baris["jenis_anggota"]); ?></td>
             <td><?php echo htmlspecialchars($baris["alamat"]); ?></td>
         <td>
-            <a href="detail.php?id=<?php echo (int) $baris["id"]; ?>">Detail</a>
+            <a href="edit.php?id=<?= $baris['id']; ?>">Edit</a> 
+
             <form class="inline" action="hapus.php" method="post"
                 onsubmit="return confirm('Yakin ingin menghapus data ini?');">
                 <input type="hidden" name="id" value="<?php echo (int) $baris["id"]; ?>">
